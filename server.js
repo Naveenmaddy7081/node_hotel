@@ -33,8 +33,14 @@ const express =require('express');
 const app = express();
 const db =require('./db');
 
+
 const bodyParser =require('body-parser');
 app.use(bodyParser.json());
+
+const PORT = process.env.PORT || 3000;
+
+// const Person = require('./models/Person');
+// const MenuItem = require('./models/MenuItem');
 
 
 
@@ -52,6 +58,8 @@ const menuItemRoutes = require('./routes/menuItemRoutes');
 // use the rotus
 app.use('/person',personRoutes);
 app.use('/menu', menuItemRoutes);
+
+
 
 // // app.get('/chiken', (req,res)=>{
 // //     res.send('sure sir, i would love to serve chiken')

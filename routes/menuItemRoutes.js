@@ -37,14 +37,32 @@ router.get('/',async (req, res) =>{
     }
 })
 
-//rrr
-router.get('/:taste', async (req, res) =>{
+router.get('/:taste', async (req, res)=>{
     try{
+        const taste = req.params.taste;
+        if(taste == 'sweet' || taste == 'spicy' || taste == 'sour'){
+            const response = await MenuItem.find({work: taste});
+            console.log('response fetched');
+            res.status(200).json(response);
 
+        }else{
+            res.status(404).json({erroe: 'invalid work type'});
+        }
     }catch(err){
-        
-    }
+        console.log(err);
+        res.status(500).json({error: 'internal server error'});
 
+    }
 })
+
+//rrr
+// router.get('/:taste', async (req, res) =>{
+//     try{
+
+//     }catch(err){
+        
+//     }
+
+// })
 
 module.exports = router;

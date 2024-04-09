@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 //define the mongodb connnection url
+require('dotenv').config();
 
 // const mongoURL = 'mongodb://127.0.0.1:27017/hotels'
 
@@ -19,9 +20,12 @@ const mongoose = require('mongoose');
 //     userNewUrlParser: true,
 //     userUnifiedTopology: true
 // })
+// const mongoUrl = process.env.MONGODB_URL;
+const mongoUrl= process.env.MONGODB_URL_LOCAL;
+// mongodb+srv://naveenmaddy6392:nm123456@cluster0.xbtjtbj.mongodb.net/
+// mongodb://127.0.0.1:27017/hotels
 
-mongoose.connect('mongodb://127.0.0.1:27017/hotels', { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 
